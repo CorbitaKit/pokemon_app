@@ -39270,29 +39270,7 @@ var render = function () {
                 ),
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "card" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "collapse",
-                    attrs: {
-                      id: "likedPokemon",
-                      "aria-labelledby": "headingThree",
-                      "data-parent": "#accordionExample",
-                    },
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "card-body" },
-                      [_c("UserLike", { attrs: { pokemon_id: 2 } })],
-                      1
-                    ),
-                  ]
-                ),
-              ]),
+              _vm._m(2),
               _vm._v(" "),
               _vm._m(3),
             ]
@@ -39388,10 +39366,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header", attrs: { id: "headingThree" } },
-      [
+    return _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-header", attrs: { id: "headingThree" } }, [
         _c("h2", { staticClass: "mb-0" }, [
           _c(
             "button",
@@ -39412,8 +39388,21 @@ var staticRenderFns = [
             ]
           ),
         ]),
-      ]
-    )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "collapse",
+          attrs: {
+            id: "likedPokemon",
+            "aria-labelledby": "headingThree",
+            "data-parent": "#accordionExample",
+          },
+        },
+        [_c("div", { staticClass: "card-body" })]
+      ),
+    ])
   },
   function () {
     var _vm = this

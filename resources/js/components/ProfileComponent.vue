@@ -87,7 +87,7 @@
                                 <div class="card-body">
                                     <!-- <UserLike  :user_like="user.like"></UserLike> -->
 
-                                     <UserLike :pokemon_id="2"></UserLike>
+                                     <!-- <UserLike :pokemon_id="2"></UserLike> -->
                                 </div>
                             </div>
                         </div>
