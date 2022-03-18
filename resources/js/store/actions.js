@@ -30,5 +30,12 @@ export default{
         })
     },
 
+    async getPokemonByName ({commit},payload){
+
+
+        let result = axios.get('/api/get-pokemon-by-name/'+payload)
+        return result
+    }
+
 
 }

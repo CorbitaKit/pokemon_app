@@ -25,6 +25,12 @@ class PokemonController extends Controller
         return $pokemon;
     }
 
+    public function getPokemonByName(string $pokemon_name) : ?String {
+        $pokemon = $this->pokemon_repo->fetchPokemonByName($pokemon_name);
+
+        return $pokemon ? $pokemon : null;
+    }
+
 
 
 }

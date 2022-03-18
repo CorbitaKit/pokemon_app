@@ -11,7 +11,7 @@
                                 <input type="text" class="form-control mb-2" placeholder="search pokemon...." v-model="query">
                             </div>
                             <div class="col-md-1">
-                                <button type="button" class="btn btn-md btn-primary">Search</button>
+                                <button type="button" @click="searchPokemon" class="btn btn-md btn-primary">Search</button>
                             </div>
                         </div>
                         <table class="table table-bordered">
@@ -55,6 +55,7 @@
 <script>
 
     import {mapGetters,mapActions} from 'vuex'
+    import Swal from 'sweetalert2'
     export default{
         data(){
             return{
@@ -77,7 +78,8 @@
         methods : {
 
             ...mapActions({
-                fetchPokemons  : 'fetchPokemons'
+                fetchPokemons  : 'fetchPokemons',
+                searchPokemonByName : 'getPokemonByName'
             }),
 
 
@@ -91,6 +93,28 @@
 
             getPokemonData(id){
                 this.$router.push('/pokemon-information/'+(id+1));
+            },
+
+            searchPokemon(){
+
+
+                var pokemon = this.searchPokemonByName(this.query)
+
+                pokemon.then(res=>{
+                    if(typeof(res.data ) === 'object'){
+                        this.$router.push('/pokemon-information/'+res.data.id);
+                    }else{
+                        Swal.fire({
+                            icon : 'error',
+                            title : 'Ooops...',
+                            text : this.query+" is not in the pokemon list"
+                        })
+                    }
+                })
+
+
+
+
             }
         },
 

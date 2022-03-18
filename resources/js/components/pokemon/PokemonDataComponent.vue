@@ -86,11 +86,11 @@
                         <div class="row">
                             <div class="col-md-5"></div>
                             <div class="col-md-4"></div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <div class="btn-group" role="group" aria-label="Basic example" v-if="! this.$route.path.includes('/home')">
-                                    <button v-if="! user.favorite" type="button" class="btn btn-warning" @click="addAsFavoritePokemon">Favorite</button>
-                                    <button type="button" class="btn btn-primary" @click="addAsLikedPokemon">Like</button>
-                                    <button type="button" class="btn btn-danger" @click="addAsHatedPokemon">Hate</button>
+                                    <button type="button" class="btn btn-warning" @click="addPokemon('favorite')">Favorite</button>
+                                    <button type="button" class="btn btn-primary" @click="addPokemon('like')">Like</button>
+                                    <button type="button" class="btn btn-danger" @click="addPokemon('hate')">Hate</button>
                                 </div>
                             </div>
                         </div>
@@ -105,6 +105,7 @@
 
 <script>
     import {mapActions, mapGetters} from 'vuex'
+    import Swal from 'sweetalert2'
     export default{
         name : 'pokemon-data',
         props : ['pokemon_id'],
@@ -116,6 +117,7 @@
 
         created(){
             this.getPokemonData(this.pokemon_id)
+
 
         },
 
@@ -132,30 +134,124 @@
 
             ...mapActions({
                 getPokemonData : 'getPokemonData',
-                addPokemon : 'addUsersPokemon'
+                addUsersPokemon : 'addUsersPokemon'
             }),
 
-            addAsFavoritePokemon(){
-                this.addPokemon(this.getData('favorite'))
+            addPokemon(mode){
+                if(this.userCanAddPokemon(mode)){
+                    if(! this.isAlreadyAttachedToUser()){
+
+
+                        var data = new FormData()
+                        data.append('user_id',localStorage.getItem('user_id'))
+                        data.append('pokemon_id',this.pokemon_id)
+                        data.append('mode',mode)
+                        this.addUsersPokemon(data)
+
+                        Swal.fire({
+                            icon : 'success',
+                            title : 'Success!',
+                            text : this.pokemon.name+" is added as your "+mode+" pokemon"
+                        })
+
+                        this.$router.push('/pokemon')
+                    }
+                }
+
+
+
             },
 
-            addAsLikedPokemon(){
-                this.addPokemon(this.getData('like'))
+
+            userCanAddPokemon(mode){
+                if(mode === 'favorite'){
+                    return this.checkForFavorite();
+                }else if(mode === 'like'){
+                    return this.checkPokemon(this.user.like,mode)
+                }else if(mode === 'hate'){
+                    return this.checkPokemon(this.user.hate,mode)
+                }
+
+
             },
 
-            addAsHatedPokemon(){
-                this.addPokemon(this.getData('hate'))
+            checkForFavorite(){
+
+                if(this.user.favorite){
+
+                    Swal.fire({
+                        icon : 'error',
+                        title : 'Oops...',
+                        text : 'You already added your favorite pokemon'
+                    })
+                    return false
+                }
+
+                return true
             },
 
-            getData(mode){
+            checkPokemon(pokemon,mode){
 
-                var data = new FormData()
-                data.append('user_id',localStorage.getItem('user_id'))
-                data.append('pokemon_id',this.pokemon_id)
-                data.append('mode',mode)
+                if(pokemon.length == 3){
+                    Swal.fire({
+                        icon : 'error',
+                        title : 'Ooops',
+                        text : 'You already '+mode+'d 3 pokemons'
+                    })
 
-                return data
+                    return false
+                }
+                return true
+            },
+
+            isAlreadyAttachedToUser(){
+
+
+                //Check if pokemon is already added as favorite pokemon
+                if(this.user.favorite){
+                    if(this.user.favorite.pokemon_id == this.pokemon_id){
+                        Swal.fire({
+                            icon : 'error',
+                            title : 'Ooops...',
+                            text : 'This pokemon is already your favorite pokemon'
+                        })
+                        return true
+                    }
+                }
+
+                //Check if pokemon is already added as liked pokemon
+
+                if(this.user.like.length > 0){
+                    for(var i = 0; i < this.user.like.length;i++){
+                        if(this.user.like[i].pokemon_id == this.pokemon_id){
+                            Swal.fire({
+                                icon : 'error',
+                                title : 'Ooops...',
+                                text : 'This pokemon is already one of your liked pokemon'
+                            })
+                            return true
+                        }
+                    }
+                }
+
+                //check if pokemon is already added as hate pokemon
+                if(this.user.hate.length > 0){
+                    for(var i = 0; i < this.user.hate.length; i++){
+                        if(this.user.hate[i].pokemon_id == this.pokemon_id){
+                            Swal.fire({
+                                icon : 'error',
+                                title : 'Ooops...',
+                                text : 'This pokemon is already one of your hated pokemon'
+                            })
+                            return true
+                        }
+                    }
+                }
+
+                return false
             }
+
+
         }
 
     }

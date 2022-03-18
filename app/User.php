@@ -51,5 +51,9 @@ class User extends Authenticatable
         return $this->hasMany(UsersPokemon::class,'user_id')->where('is_like',1);
     }
 
+    public function  hate(){
+        return $this->hasMany(UsersPokemon::class,'user_id')->where('is_hate',1);
+    }
+
 
 }

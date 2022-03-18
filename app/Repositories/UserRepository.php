@@ -12,7 +12,7 @@
 
 
         public function getUser(int $user_id) : Object{
-            return self::model()->with('information','favorite','like')->where('id',$user_id)->first();
+            return self::model()->with('information','favorite','like','hate')->where('id',$user_id)->first();
 
         }
 

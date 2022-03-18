@@ -43,69 +43,7 @@
 
                 </div>
                 <div class="card-body">
-                    <div class="accordion" id="accordionExample">
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#personalInfo" aria-expanded="true" aria-controls="personalInfo">
-                                    Personal Information
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="personalInfo" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#favoritePokemon" aria-expanded="false" aria-controls="favoritePokemon">
-                                    Favorite Pokemon
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="favoritePokemon" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <UserFavorite v-if="user.favorite" :pokemon_id="1"></UserFavorite>
-                                    <div v-else>
-                                        <p>---No Data Yet---</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#likedPokemon" aria-expanded="false" aria-controls="likedPokemon">
-                                    Liked Pokemon
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="likedPokemon" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <!-- <UserLike  :user_like="user.like"></UserLike> -->
 
-                                     <!-- <UserLike :pokemon_id="2"></UserLike> -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#hatedPokemon" aria-expanded="false" aria-controls="hatedPokemon">
-                                    Hated Pokemon
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="hatedPokemon" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

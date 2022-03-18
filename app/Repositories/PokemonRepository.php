@@ -19,5 +19,12 @@
             return $this->pokemon_api->pokemon($pokemon_id);
         }
 
+        public  function fetchPokemonByName(string $pokemon_name) : ?string {
+            $pokemon = $this->pokemon_api->pokemon(strtolower($pokemon_name));
+
+            return $pokemon ? $pokemon : null;
+
+        }
+
 
     }

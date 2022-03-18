@@ -26,3 +26,4 @@ Route::get('/get-user-info/{user_id}','UserController');
 
 Route::post('/add-users-pokemon','UsersPokemonController');
 
+Route::get('/get-pokemon-by-name/{pokemon_name}','PokemonController@getPokemonByName');
