@@ -35,7 +35,13 @@ export default{
 
         let result = axios.get('/api/get-pokemon-by-name/'+payload)
         return result
-    }
+    },
 
+    updateUserInformation({dispatch},payload){
+        axios.post('/api/update-user-information',payload)
+        .then(response=>{
+            dispatch('getUser',payload.user_id);
+        })
+    }
 
 }

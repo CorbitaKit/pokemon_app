@@ -12,12 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
 });
 
-Auth::routes();
+
+Route::post('/register-user','UserController@registerUser')->name('register-user');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('{any?}', 'HomeController@index')->where('any', '^(?!(api|xyz).*$).*');
+
+
+

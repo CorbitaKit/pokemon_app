@@ -146,6 +146,7 @@
                         data.append('user_id',localStorage.getItem('user_id'))
                         data.append('pokemon_id',this.pokemon_id)
                         data.append('mode',mode)
+                        data.append('pokemon_name',this.pokemon.name)
                         this.addUsersPokemon(data)
 
                         Swal.fire({

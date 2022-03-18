@@ -1,6 +1,7 @@
 <template>
     <div>
-        <PokemonDataLayout :pokemon_id="pokemon_id"></PokemonDataLayout>
+        <slot name="favorite"></slot>
+        <PokemonDataLayout :pokemon_id="pokemon_id"/>
     </div>
 </template>
 

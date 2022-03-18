@@ -22,8 +22,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/get-pokemon-list/{offset}','PokemonController@index');
 Route::get('/get-pokemon/{pokemon_id}','PokemonController@getPokemon');
 
-Route::get('/get-user-info/{user_id}','UserController');
+Route::get('/get-user-info/{user_id}','UserController@getUser');
 
 Route::post('/add-users-pokemon','UsersPokemonController');
 
 Route::get('/get-pokemon-by-name/{pokemon_name}','PokemonController@getPokemonByName');
+
+
+Route::post('/update-user-information','UserInformationController');

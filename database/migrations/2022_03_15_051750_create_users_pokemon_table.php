@@ -18,6 +18,7 @@ class CreateUsersPokemonTable extends Migration
             $table->timestamps();
             $table->foreignId('user_id')->constrained();
             $table->integer('pokemon_id');
+            $table->string('pokemon_name');
             $table->boolean('is_favorite')->nullable();
             $table->boolean('is_like')->nullable();
             $table->boolean('is_hate')->nullable();
