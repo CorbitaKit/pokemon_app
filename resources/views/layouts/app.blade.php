@@ -39,6 +39,10 @@
                         <li class="nav-item">
                             <router-link to="/pokemon" :class="[currentPage.includes('pokemon') ? 'active' : '', 'nav-link']">Pokemon List</router-link>
                         </li>
+
+                        <li class="nav-item">
+                            <router-link to="/user-list" :class="[currentPage.includes('user-list') ? 'active' : '', 'nav-link']">User List</router-link>
+                        </li>
                         @endguest
 
                     </ul>

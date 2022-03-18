@@ -19,6 +19,10 @@
 
         }
 
+        public function getUsers(int $user_id) : Object {
+            return self::model()->with('information','favorite','hate','like')->where('id','!=',$user_id)->get();
+        }
+
         public  function registerUser(object $request) : void {
             DB::beginTransaction();
             try{

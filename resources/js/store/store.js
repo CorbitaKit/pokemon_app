@@ -15,6 +15,7 @@ const state = {
     top_hated_pokemons : [],
     pokemons : [],
     pokemon :  [],
+    users : [],
 
 
 }

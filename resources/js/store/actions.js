@@ -42,6 +42,13 @@ export default{
         .then(response=>{
             dispatch('getUser',payload.user_id);
         })
+    },
+
+    async fetchUsers({commit,state},payload){
+
+        let  result = await axios.get('/api/get-user-list/'+state.user.id)
+
+        commit('setUsers',result.data)
     }
 
 }

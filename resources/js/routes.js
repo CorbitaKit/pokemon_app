@@ -6,7 +6,7 @@ import VueRouter from 'vue-router';
 import ProfileLayout from './components/ProfileComponent';
 import PokemonLayout from './components/pokemon/PokemonListComponent';
 import PokemonInfoLayout from './components/pokemon/PokemonDataComponent';
-
+import UserListLayout from './components/user/UserListComponent';
 Vue.use(VueRouter);
 
 const routes = [
@@ -22,6 +22,10 @@ const routes = [
         path : '/pokemon-information/:pokemon_id',
         component : PokemonInfoLayout,
         props : true
+    },
+    {
+        path : '/user-list',
+        component : UserListLayout
     }
 ]
 

@@ -10,5 +10,9 @@ export default{
 
     setPokemon:(state,payload)=>{
         state.pokemon = payload
+    },
+
+    setUsers:(state,payload)=>{
+        state.users = payload
     }
 }

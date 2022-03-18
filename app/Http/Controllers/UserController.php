@@ -20,5 +20,11 @@ class UserController extends Controller
        return redirect()->route('login');
     }
 
+    public function getUsers(int $user_id, UserRepository $user_repo) : Object {
+        $user = $user_repo->getUsers($user_id);
+
+        return $user;
+    }
+
 
 }

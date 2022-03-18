@@ -30,3 +30,5 @@ Route::get('/get-pokemon-by-name/{pokemon_name}','PokemonController@getPokemonBy
 
 
 Route::post('/update-user-information','UserInformationController');
+
+Route::get('/get-user-list/{user_id}','UserController@getUsers');

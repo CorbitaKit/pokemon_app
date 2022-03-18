@@ -6,6 +6,8 @@ export default{
 
     getPokemons : state=>state.pokemons,
 
-    getPokemon : state=>state.pokemon
+    getPokemon : state=>state.pokemon,
+
+    getUsers : state=>state.users
 
 }
